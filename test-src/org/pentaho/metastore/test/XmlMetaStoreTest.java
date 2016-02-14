@@ -38,6 +38,7 @@ public class XmlMetaStoreTest extends MetaStoreTestBase {
   @Override
   protected void tearDown() throws Exception {
     super.tearDown();
+    System.out.println(metaStore.getAll());
     FileUtil.cleanFolder( new File( metaStore.getRootFolder() ).getParentFile(), true );
   }
 
@@ -93,7 +94,7 @@ public class XmlMetaStoreTest extends MetaStoreTestBase {
 
     List<Thread> threads = new ArrayList<Thread>();
 
-    for ( int i = 9000; i < 9020; i++ ) {
+    for ( int i = 9000; i < 9500; i++ ) {
       final int index = i;
       Thread thread = new Thread() {
         public void run() {

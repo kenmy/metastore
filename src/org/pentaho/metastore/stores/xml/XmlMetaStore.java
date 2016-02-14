@@ -42,6 +42,8 @@ public class XmlMetaStore extends BaseMetaStore implements IMetaStore {
   private String rootFolder;
 
   private File rootFile;
+  
+  private int all = 0;
 
   public XmlMetaStore() throws MetaStoreException {
     this( System.getProperty( "java.io.tmpdir" ) + File.separator + UUID.randomUUID() );
@@ -441,6 +443,7 @@ public class XmlMetaStore extends BaseMetaStore implements IMetaStore {
     try {
       // In the case of a file, the ID is the name
       //
+    	all++;
       if ( element.getId() == null ) {
         element.setId( element.getName() );
       }
@@ -615,5 +618,8 @@ public class XmlMetaStore extends BaseMetaStore implements IMetaStore {
   protected void unlockStore() {
     File lockFile = new File( rootFile, ".lock" );
     lockFile.delete();
+  }
+  public int getAll(){
+	  return all;
   }
 }
